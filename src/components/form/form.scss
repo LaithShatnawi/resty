@@ -1,26 +1,109 @@
 $backgroundColor: #efefef;
 $radius: 40%;
 
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-30px);
+  }
+}
+.bounce{
+  animation-name: bounce;
+}
 form {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: auto;
-  width: 200px;
+  width: 1000px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 42px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  .urlLabel {
+    margin-right: 30px;
+  }
+  button {
+    border: none;
+    margin-left: 5px;
+    color: white;
+    background: rgb(140, 40, 79);
+    border-radius: 5px;
+    &:hover {
+      background-color: rgba($color: #082f7df0, $alpha: 0.5);
+      transform: scale(1.2) rotate(360deg);
+    }
+    transition: 0.5s ease-in;
+  }
 
   label {
     display: flex;
     margin: 1rem 0;
 
+    input {
+      border: none;
+      width: 400px;
+      height: 30px;
+      border-radius: 5px;
+    }
+
     &.methods {
       span {
         cursor: pointer;
         margin-right: 1rem;
-        padding: .25rem .5rem;
+        padding: 0.25rem 0.5rem;
         background: #ccc;
+        border-radius: 5px;
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           background: #fff;
         }
       }
+    }
+    #get {
+      background: rgba(0, 0, 255, 0.6);
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+      transition: 0.3s ease-in-out;
+    }
+    #post {
+      background: rgba(0, 255, 0, 0.5);
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+      transition: 0.3s ease-in-out;
+    }
+    #put {
+      background: rgba(255, 255, 0, 0.5);
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+      transition: 0.3s ease-in-out;
+    }
+    #delete {
+      background: rgba(255, 0, 0, 0.5);
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+      transition: 0.3s ease-in-out;
     }
   }
 }
