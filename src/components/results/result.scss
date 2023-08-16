@@ -21,16 +21,25 @@ $backgroundColor: linear-gradient(
   background: $backgroundColor;
 }
 .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid white;
-    border-radius: 10px;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 10px;
+  gap: 5px;
   .name {
   }
   .url {
     width: 300px;
     text-align: center;
+  }
+}
+
+.active {
+  width: 40px;
+  &:hover{
+
+    transform: rotate(1800deg);
+    transition: 6s;
   }
 }

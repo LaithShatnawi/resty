@@ -8,42 +8,50 @@ import Header from "./components/header/index";
 import Footer from "./components/footer/index";
 import Form from "./components/form/index";
 import Results from "./components/results/index";
+import { useState } from "react";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-    };
-  }
+function App() {
+  const [data, setData] = useState({
+    data: null,
+    requestParams: {},
+  });
+  const [showLoading, setShowLoading] = useState(false);
 
-  callApi = (requestParams) => {
+  const callApi = (requestParams, textArea) => {
     // mock output
     const data = {
       count: 2,
       results: [
-        { name: "fake thing 1", url: "http://fakethings.com/1" },
-        { name: "fake thing 2", url: "http://fakethings.com/2" },
+        {
+          name: "fake thing 1",
+          url: "http://fakethings.com/1",
+          textArea: textArea,
+        },
+        {
+          name: "fake thing 2",
+          url: "http://fakethings.com/2",
+          textArea: textArea,
+        },
       ],
     };
-    this.setState({ data, requestParams });
+    if (requestParams) setShowLoading(true);
+    setTimeout(() => {
+      setData({ data, requestParams });
+      setShowLoading(false);
+    }, 2000);
   };
-
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <div className="request">
-          <div>Request Method: {this.state.requestParams.method}</div>
-          <div>URL: {this.state.requestParams.url}</div>
-        </div>
-        <Form handleApiCall={this.callApi} />
-        <Results data={this.state.data} />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <Header />
+      <div className="request">
+        <div>Request Method: {data.requestParams.method}</div>
+        <div>URL: {data.requestParams.url}</div>
+      </div>
+      <Form handleApiCall={callApi} />
+      <Results data={data} showLoading={showLoading} />
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default App;
