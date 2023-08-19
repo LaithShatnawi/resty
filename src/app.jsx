@@ -9,6 +9,7 @@ import Footer from "./components/footer/index";
 import Form from "./components/form/index";
 import Results from "./components/results/index";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState({
@@ -17,34 +18,30 @@ function App() {
   });
   const [showLoading, setShowLoading] = useState(false);
 
-  const callApi = (requestParams, textArea) => {
+  const callApi = async (requestParams, textArea) => {
     // mock output
-    const data = {
-      count: 2,
-      results: [
-        {
-          name: "fake thing 1",
-          url: "http://fakethings.com/1",
-          textArea: textArea,
-        },
-        {
-          name: "fake thing 2",
-          url: "http://fakethings.com/2",
-          textArea: textArea,
-        },
-      ],
-    };
+    console.log(requestParams.url);
+
+    const response =
+      requestParams.method === "get"
+        ? await axios.get(requestParams.url)
+        : requestParams.method === "post"
+        ? await axios.post(requestParams.url, textArea)
+        : requestParams.method === "put"
+        ? await axios.put(requestParams.url, textArea)
+        : null;
+    console.log(response);                       //use this star wars api to fit the display: https://swapi.dev/api/people/?page=1
     if (requestParams) setShowLoading(true);
     setTimeout(() => {
-      setData({ data, requestParams });
+      setData({ response, requestParams });
       setShowLoading(false);
-    }, 2000);
+    }, 4000);
   };
   return (
     <React.Fragment>
       <Header />
       <div className="request">
-        <div>Request Method: {data.requestParams.method}</div>
+        <div>Request Method: {data.requestParams.method?.toUpperCase()}</div>
         <div>URL: {data.requestParams.url}</div>
       </div>
       <Form handleApiCall={callApi} />
