@@ -8,7 +8,7 @@ import Header from "./components/header/index";
 import Footer from "./components/footer/index";
 import Form from "./components/form/index";
 import Results from "./components/results/index";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
@@ -30,13 +30,18 @@ function App() {
         : requestParams.method === "put"
         ? await axios.put(requestParams.url, textArea)
         : null;
-    console.log(response);                       //use this star wars api to fit the display: https://swapi.dev/api/people/?page=1
+    console.log(response); //use this star wars api to fit the display: https://swapi.dev/api/people/?page=1
     if (requestParams) setShowLoading(true);
     setTimeout(() => {
       setData({ response, requestParams });
       setShowLoading(false);
-    }, 4000);
+    }, 2000);
   };
+
+  useEffect(() => {
+    console.log("my name is jeff");
+  }, [data]);
+
   return (
     <React.Fragment>
       <Header />
