@@ -17,6 +17,11 @@ function Results(props) {
             console.log(item);
             return (
               <div className="text" key={idx}>
+                <p className="url">
+                  Headers: {JSON.stringify(props.data.response?.headers)}
+                </p>
+                <div className="name">Next: {props.data.response?.data.next}</div>
+                <div className="name">Prev: {props.data.response?.data.previous}</div>
                 <div className="name">Name: {item.name}</div>
                 <div className="url">URL: {item.url}</div>
                 {item.textArea && (
