@@ -6,24 +6,37 @@ function Results(props) {
     const loadingImg = document.getElementById("img");
     loadingImg?.classList.add("active");
   }
-  console.log(props.data.response);
+  console.log(props.data.data);
 
   return (
     <section className="resultCont">
-      {props.data.response ? (
+      {props.data.data ? (
         <>
-          <div className="counter">Count {props.data.response.data.count}</div>
-          {props.data.response?.data.results.map((item, idx) => {
+          <div className="counter">Count {props.data.data.data.count}</div>
+          {props.data.data.data.results.map((item, idx) => {
             console.log(item);
             return (
               <div className="text" key={idx}>
-                <p className="url">
-                  Headers: {JSON.stringify(props.data.response?.headers)}
+                <p className="headers">
+                  <b> Headers: </b>
+                  {JSON.stringify(props.data.data.headers)}
                 </p>
-                <div className="name">Next: {props.data.response?.data.next}</div>
-                <div className="name">Prev: {props.data.response?.data.previous}</div>
-                <div className="name">Name: {item.name}</div>
-                <div className="url">URL: {item.url}</div>
+                <div className="name">
+                  <b>Next: </b>
+                  {props.data.data.data.next}
+                </div>
+                <div className="name">
+                  <b> Prev: </b>
+                  {props.data.data.data.previous}
+                </div>
+                <div className="name">
+                  <b>Name: </b>
+                  {item.name}
+                </div>
+                <div className="url">
+                  <b>URL: </b>
+                  {item.url}
+                </div>
                 {item.textArea && (
                   <div className="url">Body: {item.textArea}</div>
                 )}

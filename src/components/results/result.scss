@@ -8,8 +8,10 @@ $backgroundColor: linear-gradient(
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  margin-bottom: 200px;
+  margin-top: 150px;
   gap: 10px;
+
 }
 
 .counter {
@@ -27,6 +29,7 @@ $backgroundColor: linear-gradient(
   border: 1px solid white;
   border-radius: 10px;
   gap: 5px;
+  width: 500px;
   .name {
   }
   .url {
@@ -34,7 +37,10 @@ $backgroundColor: linear-gradient(
     text-align: center;
   }
 }
-
+b{
+  font-size: larger;
+  color: rgb(255, 191, 0);
+}
 .active {
   width: 40px;
   &:hover{
