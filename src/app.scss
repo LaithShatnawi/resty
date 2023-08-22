@@ -1,17 +1,23 @@
-$backgroundColor: linear-gradient(to bottom right, rgb(62, 16, 95), rgb(157, 62, 28));
+$backgroundColor: linear-gradient(
+  to bottom right,
+  rgb(62, 16, 95),
+  rgb(157, 62, 28)
+);
 
 html,
 body {
-  height: 100%;
+  // height: 100%;
   margin: 0;
   padding: 0;
   color: white;
   font-family: cursive;
 }
 
-body,html {
+body,
+html {
   background: $backgroundColor;
-  height: 100%;
+  // height: 100%;
+  position: relative;
   margin: 0;
   padding: 0;
   color: white;
@@ -37,8 +43,36 @@ body,html {
     margin-top: 200px;
     margin-bottom: 10px;
 
-    div{
+    div {
       display: flex;
+    }
+  }
+  .buttonContain {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    .clear {
+      width: 100px;
+      background-color: rgb(237, 46, 46);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      &:hover {
+        background-color: rgb(159, 71, 71);
+      }
+    }
+    .history {
+      width: 100px;
+      background-color: rgb(38, 118, 38);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      &:hover {
+        background-color: rgb(66, 188, 66);
+      }
     }
   }
 }
